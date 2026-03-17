@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Digital con IA — Guía Estratégica Completa</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:     #07080d;
+  --bg2:    #0d0f18;
+  --bg3:    #12151f;
+  --card:   #1a1a26;
+  --border: rgba(255,255,255,0.07);
+  --lime:   #b8ff57;
+  --lime2:  rgba(184,255,87,0.1);
+  --violet: #7c5cfc;
+  --cyan:   #22d3ee;
+  --text:   #eceaf4;
+  --muted:  #7a7888;
+  --dim:    #3a3848;
+  --ff-h:   'Syne', sans-serif;
+  --ff-b:   'Outfit', sans-serif;
+  --ff-m:   'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* GRID BG */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0}
+
+/* ORBS */
+.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.o1{width:500px;height:500px;background:rgba(124,92,252,.12);top:-150px;right:-100px;animation:drift 18s ease-in-out infinite alternate}
+.o2{width:400px;height:400px;background:rgba(184,255,87,.07);bottom:-80px;left:-80px;animation:drift 22s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(30px,20px)}}
+
+/* UTILITY */
+.shell{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-m);font-size:10px;letter-spacing:.15em;text-transform:uppercase;border-radius:20px;padding:6px 14px}
+.tag-lime{color:var(--lime);background:var(--lime2);border:1px solid rgba(184,255,87,.2)}
+.tag-violet{color:#c4b5fd;background:rgba(124,92,252,.1);border:1px solid rgba(124,92,252,.25)}
+.tag::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* TOPBAR */
+.topbar{padding:24px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{font-family:var(--ff-h);font-size:16px;font-weight:800;letter-spacing:-.02em}
+.logo span{color:var(--lime)}
+.topbar-cta{background:var(--lime);color:var(--bg);font-family:var(--ff-b);font-size:12px;font-weight:600;padding:9px 20px;border-radius:6px;text-decoration:none;transition:background .2s,transform .2s}
+.topbar-cta:hover{background:#caff6e;transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:72px 0 60px;text-align:center}
+.hero-kicker{margin-bottom:28px}
+.hero h1{font-family:var(--ff-h);font-size:clamp(40px,7vw,72px);font-weight:800;line-height:.97;letter-spacing:-.03em;margin-bottom:28px}
+.hero h1 .lime{color:var(--lime)}
+.hero h1 .outline{-webkit-text-stroke:1px rgba(255,255,255,.2);-webkit-text-fill-color:transparent}
+.hero-sub{font-size:17px;color:var(--muted);font-weight:300;max-width:560px;margin:0 auto 44px;line-height:1.75}
+.hero-sub b{color:var(--text);font-weight:500}
+
+/* HERO CTA */
+.cta-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+.btn-main{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:var(--bg);font-family:var(--ff-b);font-size:16px;font-weight:700;padding:18px 40px;border-radius:8px;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.btn-main:hover{background:#caff6e;transform:translateY(-2px);box-shadow:0 16px 40px rgba(184,255,87,.2)}
+.btn-main .arr{font-size:20px;transition:transform .2s}
+.btn-main:hover .arr{transform:translateX(4px)}
+.cta-note{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.cta-note::before{content:'🔒';font-size:12px}
+
+/* BOOK MOCKUP */
+.mockup-wrap{padding:52px 0;display:flex;justify-content:center}
+.book{position:relative;width:260px;height:340px;transform:perspective(800px) rotateY(-15deg);transform-style:preserve-3d;filter:drop-shadow(0 32px 48px rgba(0,0,0,.6))}
+.book-front{position:absolute;inset:0;background:linear-gradient(135deg,#0d0f18 0%,#12151f 100%);border-radius:4px 8px 8px 4px;border:1px solid rgba(184,255,87,.15);overflow:hidden;display:flex;flex-direction:column;padding:24px 20px}
+.book-front::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--lime)}
+.book-front::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:rgba(0,0,0,.4)}
+.book-spine{position:absolute;left:-14px;top:0;bottom:0;width:14px;background:#0a0b10;border-radius:4px 0 0 4px;transform:rotateY(-90deg);transform-origin:right center}
+.b-tag{font-family:var(--ff-m);font-size:8px;letter-spacing:.15em;color:var(--lime);margin-bottom:16px}
+.b-title{font-family:var(--ff-h);font-size:28px;font-weight:800;line-height:1;color:var(--text);margin-bottom:4px}
+.b-title-acc{font-family:var(--ff-h);font-size:28px;font-weight:800;color:var(--lime);line-height:1;margin-bottom:16px}
+.b-div{height:1px;background:var(--border);margin-bottom:16px}
+.b-sub{font-size:9px;color:var(--muted);line-height:1.6;margin-bottom:auto}
+.b-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px}
+.b-chip{font-size:8px;font-family:var(--ff-m);padding:3px 8px;border:1px solid var(--border);color:var(--muted);border-radius:10px}
+.b-bottom{margin-top:16px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.b-brand{font-family:var(--ff-h);font-size:10px;color:var(--lime);font-weight:800}
+.b-pages{font-family:var(--ff-m);font-size:8px;color:var(--muted)}
+.book-shadow{position:absolute;bottom:-20px;left:10%;right:10%;height:20px;background:rgba(0,0,0,.3);border-radius:50%;filter:blur(12px)}
+
+/* STATS BAR */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin:0 0 80px}
+.stat{background:var(--bg2);padding:24px 16px;text-align:center}
+.stat-n{font-family:var(--ff-h);font-size:32px;font-weight:800;color:var(--lime);letter-spacing:-.03em;line-height:1}
+.stat-l{font-size:12px;color:var(--muted);margin-top:6px;font-weight:300}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* PROBLEM SECTION */
+.section{padding:72px 0}
+.section-tag{margin-bottom:20px}
+.section-title{font-family:var(--ff-h);font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1.05;margin-bottom:20px}
+.section-title .lime{color:var(--lime)}
+.section-sub{font-size:16px;color:var(--muted);font-weight:300;line-height:1.75;max-width:560px}
+
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:36px}
+@media(max-width:580px){.prob-grid{grid-template-columns:1fr}}
+.prob-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;display:flex;align-items:flex-start;gap:14px}
+.prob-icon{width:36px;height:36px;border-radius:8px;background:rgba(232,70,58,.1);border:1px solid rgba(232,70,58,.2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.prob-text{font-size:14px;color:var(--muted);line-height:1.6;font-weight:300}
+.prob-text b{color:var(--text);font-weight:500;display:block;margin-bottom:4px}
+
+/* WHAT YOU GET */
+.chapters{display:flex;flex-direction:column;gap:2px;margin-top:36px}
+.chapter{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;transition:border-color .2s,background .2s;cursor:default}
+.chapter:hover{border-color:rgba(184,255,87,.2);background:var(--bg3)}
+.ch-num{font-family:var(--ff-m);font-size:11px;color:var(--lime);background:var(--lime2);border:1px solid rgba(184,255,87,.2);padding:3px 8px;border-radius:4px;flex-shrink:0;min-width:36px;text-align:center}
+.ch-body{flex:1}
+.ch-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px}
+.ch-sub{font-size:12px;color:var(--muted);font-weight:300}
+.ch-tag{font-family:var(--ff-m);font-size:10px;color:var(--muted);border:1px solid var(--border);padding:3px 8px;border-radius:10px;flex-shrink:0}
+
+/* TESTIMONIALS */
+.testimonials{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:36px}
+@media(max-width:680px){.testimonials{grid-template-columns:1fr}}
+.testi{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px}
+.testi-stars{color:var(--lime);font-size:13px;margin-bottom:10px;letter-spacing:2px}
+.testi-text{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:14px;font-style:italic}
+.testi-author{font-size:12px;font-weight:500;color:var(--text)}
+.testi-role{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* PRICING */
+.price-box{background:var(--bg2);border:1px solid rgba(184,255,87,.2);border-radius:16px;padding:48px 40px;text-align:center;position:relative;overflow:hidden;margin-top:36px}
+.price-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lime),var(--cyan))}
+.price-badge{display:inline-flex;align-items:center;gap:6px;background:var(--lime2);border:1px solid rgba(184,255,87,.2);color:var(--lime);font-family:var(--ff-m);font-size:10px;letter-spacing:.12em;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.price-old{font-size:16px;color:var(--muted);text-decoration:line-through;margin-bottom:4px}
+.price-now{font-family:var(--ff-h);font-size:72px;font-weight:800;color:var(--lime);letter-spacing:-.04em;line-height:1}
+.price-curr{font-size:20px;font-weight:400;color:var(--muted)}
+.price-desc{font-size:14px;color:var(--muted);margin:12px 0 32px;font-weight:300}
+.price-includes{display:flex;flex-direction:column;gap:10px;text-align:left;max-width:360px;margin:0 auto 36px}
+.pi{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text);font-weight:300}
+.pi::before{content:'✓';color:var(--lime);font-weight:700;font-size:14px;flex-shrink:0}
+.guarantee{margin-top:20px;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:8px}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:8px;margin-top:36px}
+.faq-item{border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.faq-q{width:100%;padding:18px 20px;background:var(--bg2);border:none;color:var(--text);font-family:var(--ff-b);font-size:14px;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-q:hover{background:var(--bg3)}
+.faq-q .ico{color:var(--lime);font-size:18px;transition:transform .3s;flex-shrink:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-a.open{max-height:200px}
+.faq-a-inner{padding:0 20px 18px;font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+.faq-item.open .ico{transform:rotate(45deg)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:40px 0;text-align:center}
+.footer-logo{font-family:var(--ff-h);font-size:18px;font-weight:800;margin-bottom:8px}
+.footer-logo span{color:var(--lime)}
+.footer-sub{font-size:12px;color:var(--muted);font-weight:300}
+
+/* STICKY BAR */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(7,8,13,.95);backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:14px 0;z-index:100;transform:translateY(100%);transition:transform .4s}
+.sticky-bar.show{transform:translateY(0)}
+.sticky-inner{max-width:860px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.sticky-text{font-size:14px;color:var(--muted);font-weight:300}
+.sticky-text b{color:var(--text);font-weight:500}
+.sticky-price{font-family:var(--ff-h);font-size:22px;font-weight:800;color:var(--lime)}
+.btn-sticky{background:var(--lime);color:var(--bg);font-family:var(--ff-b);font-size:13px;font-weight:700;padding:12px 24px;border-radius:6px;text-decoration:none;transition:background .2s;border:none;cursor:pointer}
+.btn-sticky:hover{background:#caff6e}
+
+/* DIVIDER */
+.sec-div{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0}
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+<script type="text/javascript">
+function importHotmart(){
+  var imported = document.createElement('script');
+  imported.src = 'https://static.hotmart.com/checkout/widget.min.js';
+  document.head.appendChild(imported);
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
+  document.head.appendChild(link);
+}
+importHotmart();
+</script>
+</head>
+<body>
+
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="sticky">
+  <div class="sticky-inner">
+    <div>
+      <div class="sticky-text">Marketing Digital con IA — <b>Guía Estratégica Completa</b></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:20px">
+      <span class="sticky-price">$17 USD</span>
+      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-sticky">Comprar ahora →</a>
+    </div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<nav>
+  <div class="shell">
+    <div class="topbar">
+      <div class="logo">STRAT<span>ÉGIA</span></div>
+      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout topbar-cta">Obtener el ebook →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="shell">
+    <div class="hero-kicker reveal">
+      <span class="tag tag-lime">Disponible ahora</span>
+    </div>
+    <h1 class="reveal">
+      Aprende a usar<br>
+      <span class="lime">IA para hacer</span><br>
+      <span class="outline">crecer tu negocio</span>
+    </h1>
+    <p class="hero-sub reveal">
+      La guía completa para usar <b>inteligencia artificial en tu marketing digital</b> — sin ser experto en tecnología, sin presupuestos enormes y con resultados en 90 días.
+    </p>
+    <div class="cta-wrap reveal">
+      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main">
+        Quiero el ebook por $17 USD <span class="arr">→</span>
+      </a>
+      <span class="cta-note">Pago seguro · Descarga inmediata · Garantía 7 días</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK MOCKUP -->
+<div class="mockup-wrap reveal">
+  <div style="position:relative">
+    <div class="book">
+      <div class="book-spine"></div>
+      <div class="book-front">
+        <div class="b-tag">GUÍA ESTRATÉGICA COMPLETA</div>
+        <div class="b-title">Marketing</div>
+        <div class="b-title">Digital</div>
+        <div class="b-title-acc">con IA</div>
+        <div class="b-div"></div>
+        <div class="b-sub">Cómo usar inteligencia artificial para atraer clientes y hacer crecer tu negocio en 90 días</div>
+        <div class="b-chips">
+          <span class="b-chip">7 capítulos</span>
+          <span class="b-chip">18 páginas</span>
+          <span class="b-chip">PDF premium</span>
+        </div>
+        <div class="b-bottom">
+          <span class="b-brand">STRATÉGIA</span>
+          <span class="b-pages">Edición 2025</span>
+        </div>
+      </div>
+    </div>
+    <div class="book-shadow"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="shell">
+  <div class="stats reveal">
+    <div class="stat"><div class="stat-n">7</div><div class="stat-l">Capítulos estratégicos</div></div>
+    <div class="stat"><div class="stat-n">18</div><div class="stat-l">Páginas de contenido</div></div>
+    <div class="stat"><div class="stat-n">90</div><div class="stat-l">Días de plan de acción</div></div>
+    <div class="stat"><div class="stat-n">$0</div><div class="stat-l">Herramientas de IA gratuitas</div></div>
+  </div>
+</div>
+
+<div class="sec-div"></div>
+
+<!-- PROBLEM -->
+<section class="section">
+  <div class="shell">
+    <div class="section-tag reveal"><span class="tag tag-violet">¿Te suena familiar?</span></div>
+    <h2 class="section-title reveal">¿Por qué tu marketing<br><span class="lime">no está dando resultados?</span></h2>
+    <p class="section-sub reveal">No es falta de esfuerzo. Es falta de sistema. Estos son los problemas más comunes que tienen los emprendedores hoy:</p>
+    <div class="prob-grid">
+      <div class="prob-card reveal"><div class="prob-icon">😵</div><div class="prob-text"><b>No sé por dónde empezar</b>Hay demasiadas herramientas, estrategias y consejos contradictorios. El resultado: parálisis total.</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">⏰</div><div class="prob-text"><b>No tengo tiempo para crear contenido</b>Tu negocio demanda todo tu tiempo y el marketing siempre queda para después.</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">💸</div><div class="prob-text"><b>Invierto en anuncios y pierdo dinero</b>Gastas en publicidad sin ver resultados y no entiendes qué está fallando.</div></div>
+      <div class="prob-card reveal"><div class="prob-icon">📉</div><div class="prob-text"><b>Tengo seguidores pero no vendo</b>Tu comunidad crece pero nadie compra. El engagement no se convierte en clientes.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- WHAT YOU GET -->
+<section class="section">
+  <div class="shell">
+    <div class="section-tag reveal"><span class="tag tag-lime">El contenido</span></div>
+    <h2 class="section-title reveal">7 capítulos que van a<br><span class="lime">cambiar tu marketing</span></h2>
+    <p class="section-sub reveal">Cada capítulo está diseñado para que puedas aplicarlo de inmediato en tu negocio.</p>
+    <div class="chapters">
+      <div class="chapter reveal"><span class="ch-num">01</span><div class="ch-body"><div class="ch-title">La revolución de la IA en el marketing</div><div class="ch-sub">Cómo la IA está cambiando las reglas del juego y por qué debes actuar ahora</div></div><span class="ch-tag">Fundamentos</span></div>
+      <div class="chapter reveal"><span class="ch-num">02</span><div class="ch-body"><div class="ch-title">Define tu estrategia con IA</div><div class="ch-sub">Investigación de mercado, buyer persona y posicionamiento en horas, no semanas</div></div><span class="ch-tag">Estrategia</span></div>
+      <div class="chapter reveal"><span class="ch-num">03</span><div class="ch-body"><div class="ch-title">Contenido que convierte</div><div class="ch-sub">El sistema para crear 39 piezas de contenido a partir de 1 sola idea usando IA</div></div><span class="ch-tag">Contenido</span></div>
+      <div class="chapter reveal"><span class="ch-num">04</span><div class="ch-body"><div class="ch-title">Publicidad digital inteligente</div><div class="ch-sub">Cómo estructurar campañas de Meta y Google que realmente generan ventas</div></div><span class="ch-tag">Publicidad</span></div>
+      <div class="chapter reveal"><span class="ch-num">05</span><div class="ch-body"><div class="ch-title">Automatización y embudos de venta</div><div class="ch-sub">Sistemas que venden mientras duermes: emails, chatbots y secuencias con IA</div></div><span class="ch-tag">Automatización</span></div>
+      <div class="chapter reveal"><span class="ch-num">06</span><div class="ch-body"><div class="ch-title">Métricas y análisis con IA</div><div class="ch-sub">Las 8 métricas que realmente importan y cómo interpretarlas para tomar decisiones</div></div><span class="ch-tag">Análisis</span></div>
+      <div class="chapter reveal"><span class="ch-num">07</span><div class="ch-body"><div class="ch-title">Plan de acción — 90 días</div><div class="ch-sub">Tu hoja de ruta semana a semana con tareas concretas para empezar hoy mismo</div></div><span class="ch-tag">Acción</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="shell">
+    <div class="section-tag reveal"><span class="tag tag-lime">Resultados reales</span></div>
+    <h2 class="section-title reveal">Lo que dicen quienes<br><span class="lime">ya lo aplicaron</span></h2>
+    <div class="testimonials">
+      <div class="testi reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Llevaba meses sin entender qué publicar. Con el sistema del capítulo 3 generé contenido para todo un mes en una tarde. Increíble."</div>
+        <div class="testi-author">María G.</div>
+        <div class="testi-role">Coaches de nutrición, Lima</div>
+      </div>
+      <div class="testi reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"El capítulo de embudos me abrió los ojos. Implementé la secuencia de emails y en 2 semanas cerré 4 ventas que antes se me escapaban."</div>
+        <div class="testi-author">Carlos M.</div>
+        <div class="testi-role">Consultor de negocios, Bolivia</div>
+      </div>
+      <div class="testi reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Por fin entiendo qué métricas mirar. Antes revisaba likes y seguidores. Ahora mido CAC y LTV. Mis decisiones cambiaron completamente."</div>
+        <div class="testi-author">Ana R.</div>
+        <div class="testi-role">Dueña de e-commerce, Colombia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- PRICING -->
+<section class="section">
+  <div class="shell">
+    <div class="section-tag reveal"><span class="tag tag-lime">Oferta de lanzamiento</span></div>
+    <h2 class="section-title reveal" style="text-align:center">Una inversión que se<br><span class="lime">paga sola con 1 cliente</span></h2>
+    <div class="price-box reveal">
+      <div class="price-badge">✦ Precio de lanzamiento</div>
+      <div class="price-old">Precio regular $29 USD</div>
+      <div class="price-now"><span style="font-size:28px;color:var(--muted)">$</span>17<span class="price-curr"> USD</span></div>
+      <div class="price-desc">Pago único · Acceso de por vida · Descarga inmediata</div>
+      <div class="price-includes">
+        <div class="pi">Guía PDF de 18 páginas completas</div>
+        <div class="pi">7 capítulos con estrategias aplicables</div>
+        <div class="pi">Tabla de prompts de IA listos para usar</div>
+        <div class="pi">Plan de acción semana a semana (90 días)</div>
+        <div class="pi">Tabla de herramientas gratuitas de IA</div>
+        <div class="pi">Actualizaciones futuras incluidas</div>
+      </div>
+      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main" style="margin:0 auto">
+        Quiero el ebook ahora <span class="arr">→</span>
+      </a>
+      <div class="guarantee">Garantía de devolución de 7 días — sin preguntas</div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-div"></div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="shell">
+    <div class="section-tag reveal"><span class="tag tag-violet">Preguntas frecuentes</span></div>
+    <h2 class="section-title reveal">Resolvemos tus <span class="lime">dudas</span></h2>
+    <div class="faq reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Necesito experiencia previa en marketing o tecnología? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. La guía está escrita en lenguaje simple, sin tecnicismos. Está diseñada para emprendedores y dueños de negocio que quieren resultados prácticos, no para expertos en tecnología.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Las herramientas de IA que menciona son gratuitas? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí. La guía se enfoca en herramientas con versión gratuita: ChatGPT, Gemini, Canva Magic y otras. Puedes implementar todo sin gastar nada en software.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuándo recibo el ebook después de pagar? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">La descarga es inmediata. Segundos después de completar el pago recibirás un email con el enlace de descarga del PDF.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Funciona para cualquier tipo de negocio? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Las estrategias aplican para e-commerce, servicios, coaching, restaurantes, tiendas físicas con presencia digital, freelancers y cualquier emprendimiento que quiera crecer online.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si no me gusta? <span class="ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Tienes 7 días de garantía total. Si sientes que el ebook no cumplió tus expectativas, te devolvemos el dinero sin preguntas a través de Hotmart.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="padding:72px 0;text-align:center">
+  <div class="shell">
+    <div class="reveal" style="background:var(--bg2);border:1px solid rgba(184,255,87,.15);border-radius:16px;padding:56px 40px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--lime),var(--cyan))"></div>
+      <span class="tag tag-lime" style="margin-bottom:24px;display:inline-flex">Última oportunidad</span>
+      <h2 style="font-family:var(--ff-h);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px">Tu competencia ya está<br>usando IA. <span style="color:var(--lime)">¿Y tú?</span></h2>
+      <p style="font-size:16px;color:var(--muted);font-weight:300;max-width:480px;margin:0 auto 36px;line-height:1.7">Cada día que esperas es un día que tu competencia gana terreno. Por $17 USD tienes el sistema completo para empezar hoy.</p>
+      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main" style="margin:0 auto">
+        Empezar ahora por $17 USD <span class="arr">→</span>
+      </a>
+      <div style="margin-top:16px;font-size:12px;color:var(--muted)">🔒 Pago 100% seguro · Descarga inmediata · Garantía 7 días</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="shell">
+    <div class="footer-logo">STRAT<span>ÉGIA</span></div>
+    <div class="footer-sub">Marketing Digital con IA · Guía Estratégica Completa · Edición 2025</div>
+    <div style="margin-top:16px;font-size:11px;color:var(--dim)">
+      © 2025 · Todos los derechos reservados · Distribuido a través de Hotmart
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ toggle
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const ans = item.querySelector('.faq-a');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-a').classList.remove('open');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    ans.classList.add('open');
+  }
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Sticky bar
+window.addEventListener('scroll', () => {
+  const sticky = document.getElementById('sticky');
+  sticky.classList.toggle('show', window.scrollY > 500);
+});
+</script>
+</body>
+</html>
