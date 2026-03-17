@@ -168,6 +168,43 @@ footer{border-top:1px solid var(--border);padding:40px 0;text-align:center}
 .btn-sticky{background:var(--lime);color:var(--bg);font-family:var(--ff-b);font-size:13px;font-weight:700;padding:12px 24px;border-radius:6px;text-decoration:none;transition:background .2s;border:none;cursor:pointer}
 .btn-sticky:hover{background:#caff6e}
 
+
+/* Hotmart button override */
+.hotmart-fb.hotmart__button-checkout {
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  background:var(--lime)!important;
+  color:var(--bg)!important;
+  font-family:var(--ff-b)!important;
+  font-size:16px!important;
+  font-weight:700!important;
+  padding:18px 40px!important;
+  border-radius:8px!important;
+  text-decoration:none!important;
+  transition:all .2s!important;
+  border:none!important;
+  cursor:pointer!important;
+  width:auto!important;
+  height:auto!important;
+}
+.hotmart-fb.hotmart__button-checkout:hover{
+  background:#caff6e!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 40px rgba(184,255,87,.2)!important;
+}
+.hotmart-fb.hotmart__button-checkout img{display:none!important}
+.hotmart-fb.btn-sticky{
+  font-size:13px!important;
+  padding:12px 24px!important;
+  border-radius:6px!important;
+}
+.hotmart-fb.topbar-cta{
+  font-size:12px!important;
+  padding:9px 20px!important;
+  border-radius:6px!important;
+}
+
 /* DIVIDER */
 .sec-div{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0}
 
@@ -175,16 +212,16 @@ footer{border-top:1px solid var(--border);padding:40px 0;text-align:center}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
+
 <script type="text/javascript">
 function importHotmart(){
-  var imported = document.createElement('script');
-  imported.src = 'https://static.hotmart.com/checkout/widget.min.js';
-  document.head.appendChild(imported);
-  var link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.type = 'text/css';
-  link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css';
-  document.head.appendChild(link);
+  var s=document.createElement('script');
+  s.src='https://static.hotmart.com/checkout/widget.min.js';
+  document.head.appendChild(s);
+  var l=document.createElement('link');
+  l.rel='stylesheet';l.type='text/css';
+  l.href='https://static.hotmart.com/css/hotmart-fb.min.css';
+  document.head.appendChild(l);
 }
 importHotmart();
 </script>
@@ -232,9 +269,7 @@ importHotmart();
       La guía completa para usar <b>inteligencia artificial en tu marketing digital</b> — sin ser experto en tecnología, sin presupuestos enormes y con resultados en 90 días.
     </p>
     <div class="cta-wrap reveal">
-      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main">
-        Quiero el ebook por $17 USD <span class="arr">→</span>
-      </a>
+      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main">Quiero el ebook por $17 USD →</a>
       <span class="cta-note">Pago seguro · Descarga inmediata · Garantía 7 días</span>
     </div>
   </div>
@@ -364,9 +399,7 @@ importHotmart();
         <div class="pi">Tabla de herramientas gratuitas de IA</div>
         <div class="pi">Actualizaciones futuras incluidas</div>
       </div>
-      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main" style="margin:0 auto">
-        Quiero el ebook ahora <span class="arr">→</span>
-      </a>
+      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main" style="margin:0 auto">Quiero el ebook ahora →</a>
       <div class="guarantee">Garantía de devolución de 7 días — sin preguntas</div>
     </div>
   </div>
@@ -412,9 +445,7 @@ importHotmart();
       <span class="tag tag-lime" style="margin-bottom:24px;display:inline-flex">Última oportunidad</span>
       <h2 style="font-family:var(--ff-h);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em;margin-bottom:16px">Tu competencia ya está<br>usando IA. <span style="color:var(--lime)">¿Y tú?</span></h2>
       <p style="font-size:16px;color:var(--muted);font-weight:300;max-width:480px;margin:0 auto 36px;line-height:1.7">Cada día que esperas es un día que tu competencia gana terreno. Por $17 USD tienes el sistema completo para empezar hoy.</p>
-      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main" style="margin:0 auto">
-        Empezar ahora por $17 USD <span class="arr">→</span>
-      </a>
+      <a onclick="return false;" href="https://pay.hotmart.com/B104942289H?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-main" style="margin:0 auto">Empezar ahora por $17 USD →</a>
       <div style="margin-top:16px;font-size:12px;color:var(--muted)">🔒 Pago 100% seguro · Descarga inmediata · Garantía 7 días</div>
     </div>
   </div>
